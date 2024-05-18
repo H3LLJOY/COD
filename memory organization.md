@@ -26,7 +26,7 @@ As an aside, multiplexed addressing plus the use of square arrays result in a qu
 
 ## 16 x 8 Memory Chip Organization
 
-![fig_c](Images/fig_c.jpg)
+       ![fig_c](Images/fig_c.jpg)
 
 - A memory chip with 16 words of 8 bits each is referred to as a 16 x 8 organization.
 - Data input and output lines of each Sense/Write circuit are connected to a single bidirectional data line to reduce pins.
@@ -37,7 +37,7 @@ As an aside, multiplexed addressing plus the use of square arrays result in a qu
 
 ## 1. 128 x 8 Memory Chips
 
-![fig_d](Images/fig_d.jpg)
+   ![fig_d](Images/fig_d.jpg)
 
 - Organized as 128 words of 8 bits each.
 - Data bus size: 8 bits.
@@ -45,7 +45,7 @@ As an aside, multiplexed addressing plus the use of square arrays result in a qu
 
 ## 2. 1024 x 1 Memory Chips
 
-![fig_e](Images/fig_e.jpg)
+  ![fig_e](Images/fig_e.jpg)
 
 - Organized as 1024 words of 1 bit each.
 - Data bus size: 1 bit.
@@ -61,7 +61,7 @@ As an aside, multiplexed addressing plus the use of square arrays result in a qu
     - But let's consider an incident where we use 32 words in a single row. That implies that we only need 32 rows to have all words (32 x 32 = 1024). In this case, we still need 10 lines for address selecting, but 5 for row selection and 5 for column selection. A row address selects a row of 32 cells, all of which are accessed in parallel. However, according to the column address, only one of these cells is connected to the external data line via the input-output multiplexers.
     - The arrangement for row address and column address decoders is shown in the figure below:
 
-![fig_f](Images/fig_f.jpg)
+         ![fig_f](Images/fig_f.jpg)
 
 # Chip Logic Summary
 
