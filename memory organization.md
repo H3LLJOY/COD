@@ -12,12 +12,7 @@ Note that there are only 11 address lines (A0–A10), half the number you would 
 
 As an aside, multiplexed addressing plus the use of square arrays result in a quadrupling of memory size with each new generation of memory chips. One more pin devoted to addressing doubles the number of rows and columns, and so the size of the chip memory grows by a factor of 4.
 
-![Screenshot 2024-05-18 070721](Images\Screenshot 2024-05-18 070721.png)
-
-------
-
-
-
+![Screenshot 2024-05-18 070721](Images/Screenshot%202024-05-18%20070721.png)
 
 # Internal Organization of Memory Chips (By me)
 
@@ -25,15 +20,13 @@ As an aside, multiplexed addressing plus the use of square arrays result in a qu
 
 ## Memory Cell Organization inside the chip
 
-- Each row of cells makes up a memory word, with all cells in a row connected to a common line called the word line.(Physical implementation maybe different. Maybe one row could have Multiple words. Let's talk about that later. )
+- Each row of cells makes up a memory word, with all cells in a row connected to a common line called the word line. (Physical implementation may be different. Maybe one row could have multiple words. Let's talk about that later.)
 - An address decoder is used to drive the word line, enabling one word line based on the address in the address bus.
-- Cells in each column are connected by two lines known as bit lines, connected to data input and output lines through a Sense/Write circuit. *During a Read operation, the Sense/Write circuit sense (read) the information stored in the cells selected by a word line and transmit this information to the output data line. During a write operation, the sense/write circuit receive information and store it in the cells of the selected word.*
+- Cells in each column are connected by two lines known as bit lines, connected to data input and output lines through a Sense/Write circuit. *During a Read operation, the Sense/Write circuit senses (reads) the information stored in the cells selected by a word line and transmits this information to the output data line. During a write operation, the sense/write circuit receives information and stores it in the cells of the selected word.*
 
 ## 16 x 8 Memory Chip Organization
 
-![](Images\fig_c.jpg)
-
-
+![fig_c](Images/fig_c.jpg)
 
 - A memory chip with 16 words of 8 bits each is referred to as a 16 x 8 organization.
 - Data input and output lines of each Sense/Write circuit are connected to a single bidirectional data line to reduce pins.
@@ -42,83 +35,33 @@ As an aside, multiplexed addressing plus the use of square arrays result in a qu
 
 # Larger Memory Units (Ex - A unit with 1024 memory cells)
 
-1. ## 128 x 8 Memory Chips
+## 1. 128 x 8 Memory Chips
 
-   ​                                         ![fig_d](Images\fig_d.jpg) 
+![fig_d](Images/fig_d.jpg)
 
-   
+- Organized as 128 words of 8 bits each.
+- Data bus size: 8 bits.
+- Address bus size: 7 bits (2^7 = 128).
 
-   - Organized as 128 words of 8 bits each.
-   - Data bus size: 8 bits.
-   - Address bus size: 7 bits (2^7 = 128).
-     
+## 2. 1024 x 1 Memory Chips
 
-2. ## 1024 x 1 Memory Chips
-
-![fig_e](Images\fig_e.jpg)
-
-
+![fig_e](Images/fig_e.jpg)
 
 - Organized as 1024 words of 1 bit each.
 - Data bus size: 1 bit.
 - Address bus size: 10 bits (2^10 = 1024).
 
-
-
-------
-
-## Memory Address Decoding
+# Memory Address Decoding
 
 - A memory location is identified by the contents of the memory address bus, decoded by a decoder.
-
 - Two decoding methods based on memory organization:
-  - Each memory word organized in a row, using the entire address bus to decode the address.(Ex-All Above ones)
-  
-  - Several memory words organized in one row, dividing the address bus into row and column address groups.(Now in a single row we have multiple Words)
-  
-    - Ex-Lets say we have 1024 memory cells(1024 bites) and a size of a word is 1 bite. Typically we need to have 10 bits address lines for this if we use one word in a row. 
-    - But let's consider an incident  where we use 32 words in a single row. That implies that we only need 32 rows to have all words.(32 x 32 = 1024).In this case also we still need 10 lines for address selecting. But 5 for row selection and 5 for column selection. A row address selects a row of 32 cells, all of which are accessed in parallel. However, according to the column address, only one of these cells is connected to the external data line via the input output multiplexers. 
-    - The arrangement for row address and column address decoders is shown in the figure below
-  
-    ![fig_f](Images\fig_f.jpg)
+  - Each memory word organized in a row, using the entire address bus to decode the address. (Ex-All Above ones)
+  - Several memory words organized in one row, dividing the address bus into row and column address groups. (Now in a single row we have multiple Words)
+    - Ex: Let's say we have 1024 memory cells (1024 bits) and a size of a word is 1 bit. Typically, we need to have 10 bits address lines for this if we use one word in a row.
+    - But let's consider an incident where we use 32 words in a single row. That implies that we only need 32 rows to have all words (32 x 32 = 1024). In this case, we still need 10 lines for address selecting, but 5 for row selection and 5 for column selection. A row address selects a row of 32 cells, all of which are accessed in parallel. However, according to the column address, only one of these cells is connected to the external data line via the input-output multiplexers.
+    - The arrangement for row address and column address decoders is shown in the figure below:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![fig_f](Images/fig_f.jpg)
 
 # Chip Logic Summary
 
@@ -142,7 +85,5 @@ Semiconductor memory chips contain arrays of memory cells with trade-offs in spe
   - Ground (Vss) and voltage source (Vcc) pins are also present.
 - **Memory Growth:**
   - Multiplexed addressing and square arrays quadruple memory size with each new chip generation.
-
-------
 
 This summary captures the essential points about the organization and functioning of memory chips, focusing on a typical 16-Mbit DRAM example.
